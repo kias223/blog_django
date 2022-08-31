@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    section {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    header {
+        font-size: 30px;
+        margin: 20px 50px;
+    }
+
+    .header_post_content h2 {
+        display: flex;
+        align-items: baseline;
+        gap: 20px;
+        padding: 10px 0px;
+    }
+
+    .summary_content {
+        display: flex;
+        gap: 20px;
+    }
+
+    .summary_content div {
+        margin-top: 30px;
+        width: 45%;
+    }
+
+    .text_sumary p {
+        padding: 10% 0;
+        font-size: 30px;
+    }
+
+    .post_content {
+        padding: 10px 50px;
+    }
+
+    .post_content h2 {
+        display: flex;
+        gap: 20px;
+        width: 70%;
+        font-size: 25px;
+    }
+
+    .post_content a {
+        text-decoration: none;
+        background-color: blue;
+        padding: 10px;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 17px;
+    }
+
+    .post_content a:hover {
+        background-color: rgb(70, 34, 99);
+    }
+
+    .post_content p {}
+</style>
+
+<body>
+
+
+
+     <header>
+        <h2> meu blog </h2>
+    </header>
+
+
+    {% for post in posts %}
+<section>
+
+    <div class="post_content">
+
+        <div>
+            <h2> {{ post.author }} <p> {{ post.created_at|date:'d, M Y' }}</p></h2>
+        </div>
+
+        <div class="summary_content">
+            <div>
+                {{ post.img_summary|safe }}
+            </div>
+
+            <div class="text_sumary">
+                <p> {{ post.summary|safe }}</p>
+                <a href="/posts/{{ post.pk }}">{{ post.title }}</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+    {% endfor %}
+
+</body>
+</html>

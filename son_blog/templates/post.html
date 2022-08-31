@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>post</title>
+</head>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    header {
+        margin-left: 2%;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    header h2 {
+        font-size: 40px;
+    }
+
+    header p {
+        font-size: 25px;
+    }
+
+    .header_post {
+        position: relative;
+        margin-left: 5%;
+        display: flex;
+    }
+
+    .categories {
+        text-aling: center;
+        position: absolute;
+        top: 10px;
+        left: 1%;
+        display: grid;
+        grid-template-columns: 110px 110px 110px 110px;
+        grid-row-gap: 10px;
+        grid-column-gap: 10px;
+    }
+
+    .categories p:hover {
+        cursor: pointer;
+        opacity: 95%;
+    }
+
+    .categories p {
+        padding: 2px 10px;
+        opacity: 70%;
+        color: #fff;
+        font-size: 17px;
+        width: 95%;
+        text-align: center;
+        border-radius: 5px;
+        background-color: blue;
+    }
+
+    .img {
+        width: 500px;
+        height: 400px;
+    }
+
+    .body_post {
+        font-size: 20px;
+        margin: 40px 2%;
+    }
+</style>
+
+<body>
+
+    <header>
+    <h2>  {{ post.title }}</h2>
+    <p> created for {{ post.author }} in {{ post.created_at|date:'d, M Y' }}</p>
+    </header>
+
+    <section class="header_post">
+        <div class="categories"> {{ post.categories|safe }} </div>
+        <div class="img"> {{ post.img_summary|safe}} </div>
+    </section>
+
+    <section class="body_post">
+    <p>{{post.summary}}</p>
+    <p{{ post.content|safe }}</p>
+    </section>
+
+</body>
+</html>
